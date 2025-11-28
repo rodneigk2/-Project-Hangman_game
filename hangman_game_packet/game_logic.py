@@ -1,5 +1,5 @@
 
-def crate_state(word, max_attempts=6):
+def create_state(word, max_attempts=6):
     return {
     "word": word,
     "lines": ["_"] * len(word),
@@ -15,10 +15,10 @@ def process_guess(state, letter):
         return "Empty"
     
     if len(letter) != 1:
-        return "Entry only one letter"
+        return "Enter only one letter"
     
-    if not letter.isalpha:
-        return "Entre only letters"
+    if not letter.isalpha():
+        return "Enter only letters"
     
     if letter in state["wrong"] or letter in state["lines"]:
         return "Repeated Entry"
