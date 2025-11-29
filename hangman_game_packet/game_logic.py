@@ -4,7 +4,8 @@ def create_state(word, max_attempts=6):
     "word": word,
     "lines": [" " if char == " " else "_" for char in word],
     "wrong": [],  
-    "attempts": max_attempts
+    "attempts": max_attempts,
+    "max_attempts": max_attempts
 }
 
 
