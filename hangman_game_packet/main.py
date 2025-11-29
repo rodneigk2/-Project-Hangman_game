@@ -2,7 +2,7 @@ from game_logic import create_state, process_guess
 from ui import build_ui
 from tkinter import messagebox
 
-state = create_state("batata") ###################################
+state = create_state("rato torto")
 
 def handle_submit(entry, label_word, attempts_label, wrong_label, button):
   
