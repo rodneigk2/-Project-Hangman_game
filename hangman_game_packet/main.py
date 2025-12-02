@@ -4,6 +4,9 @@ from tkinter import messagebox
 
 state = create_state("rato torto")
 
+def _get_original_word_from_state(state):
+    return state.get('original_word', state.get('word'))
+
 def handle_submit(entry, label_word, attempts_label, wrong_label, button):
     letter = entry.get()
     entry.delete(0, 'end')
@@ -32,8 +35,9 @@ def handle_submit(entry, label_word, attempts_label, wrong_label, button):
         wrong_label.config(text="Wrong Letters: " + ", ".join(state["wrong"]))
 
     if result == "You win":
-        messagebox.showinfo("Victory!", f"The word was: {state['word']}")
+        messagebox.showinfo("Victory!", f"The word was: {_get_original_word_from_state}")
         button.config(state="disabled")
+        entry.config(state="disabled")
         return
     
     if result == "You lose":
@@ -43,6 +47,7 @@ def handle_submit(entry, label_word, attempts_label, wrong_label, button):
 
 
 def on_reset(entry, label_word, attempts_label, wrong_label, button_try):
+    original = _get_original_word_from_state(state)
     new_state = create_state(state["word"], max_attempts=state.get("max_attempts", 6))
     
     state.clear()

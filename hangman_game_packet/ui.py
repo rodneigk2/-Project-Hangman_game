@@ -4,12 +4,14 @@ from hangman_ascii import chose_hangman_stage
 def build_ui(state, on_submit, on_reset):
     window = tk.Tk()
     window.title("HANGMAN GAME")
-    window.geometry('500x320')
+    window.geometry('500x380')
     window.resizable(False,False)
+    center = tk.Frame(window)
+    center.pack(expand=True)
 
-    tk.Label(window, text="Hangman game", font=('Arial', 12)).pack(pady=6)
+    tk.Label(center, text="Hangman game", font=('Arial', 12)).pack(pady=6)
 
-    top = tk.Frame(window)
+    top = tk.Frame(center)
     top.pack(fill='x', padx=8, pady=4)
 
     hangman_label = tk.Label(
@@ -19,7 +21,7 @@ def build_ui(state, on_submit, on_reset):
         justify='left'
     )
     
-    hangman_label.pack(side='left', padx=(0,12))
+    hangman_label.pack(side='left', padx=(0, 12))
 
     right = tk.Frame(top)
     right.pack(side='left', fill='y')
